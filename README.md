@@ -1,6 +1,6 @@
 # docker-restic
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/liquidjs/restic.svg)](https://hub.docker.com/r/liquidjs/restic/) [![Docker layers](https://images.microbadger.com/badges/image/liquidjs/restic.svg)](https://microbadger.com/images/liquidjs/restic) [![Github Stars](https://img.shields.io/github/stars/Liquid-JS/restic.svg?label=github%20%E2%98%85)](https://github.com/Liquid-JS/restic/) [![Github Stars](https://img.shields.io/github/contributors/Liquid-JS/restic.svg)](https://github.com/Liquid-JS/restic/) [![Github Forks](https://img.shields.io/github/forks/Liquid-JS/restic.svg?label=github%20forks)](https://github.com/Liquid-JS/restic/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/liquidjs/restic.svg)](https://hub.docker.com/r/liquidjs/restic/) [![Github Stars](https://img.shields.io/github/stars/Liquid-JS/restic.svg?label=github%20%E2%98%85)](https://github.com/Liquid-JS/restic/) [![Github Stars](https://img.shields.io/github/contributors/Liquid-JS/restic.svg)](https://github.com/Liquid-JS/restic/) [![Github Forks](https://img.shields.io/github/forks/Liquid-JS/restic.svg?label=github%20forks)](https://github.com/Liquid-JS/restic/)
 
 Restic is a fantastic backup tool. To wrap this in a useful and flexible docker container there is this repo.
 

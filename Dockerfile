@@ -1,7 +1,7 @@
 # Build Phase
-FROM golang:1.16-alpine
+FROM golang:1.18-alpine
 
-ENV RESTIC_VERSION="0.12.0"
+ENV RESTIC_VERSION="0.13.1"
 
 # Install the items
 RUN apk add --no-cache ca-certificates wget gnupg git \
@@ -16,7 +16,7 @@ RUN apk add --no-cache ca-certificates wget gnupg git \
 
 
 # Release phase
-FROM golang:1.16-alpine
+FROM alpine
 
 # Backup options
 ENV RESTIC_BACKUP_OPTIONS=""
@@ -35,12 +35,12 @@ ENV CRON_BACKUP_EXPRESSION="15   3  *   *   *"
 ENV CRON_CLEANUP_EXPRESSION="15  0  0   *   *"
 
 # Script and config
-COPY --from=0 /go/bin/restic /go/bin/restic
-ADD ./target/start_cron.sh /go/bin
+COPY --from=0 /go/bin/restic /usr/local/bin/restic
+ADD ./target/start_cron.sh /usr/local/bin
 ADD ./target/supervisor_restic.ini /etc/supervisor.d/restic.ini
 
 RUN apk add --no-cache ca-certificates fuse gnupg openssh-client supervisor && \
-    chmod +x /go/bin/start_cron.sh && \
+    chmod +x /usr/local/bin/start_cron.sh && \
     mkdir -p /var/log/supervisor
 
 # Start the process
