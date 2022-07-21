@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.12.0
+
+  * Update Golang to version 1.16
+  * Update Restic to 0.12.0
+  * Install only neccesary openssh-client
+
 ## v0.9.6
 
   * Update Golang to version 1.13
