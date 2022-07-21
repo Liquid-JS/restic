@@ -1,11 +1,10 @@
 # Build Phase
-FROM golang:1.13-alpine
+FROM golang:1.16-alpine
 
-ENV RESTIC_VERSION="0.9.6"
+ENV RESTIC_VERSION="0.12.0"
 
 # Install the items
-RUN apk update \
-  && apk add ca-certificates wget gnupg git \
+RUN apk add --no-cache ca-certificates wget gnupg git \
   && update-ca-certificates \
   && wget -qO /tmp/restic-${RESTIC_VERSION}.tar.gz "https://github.com/restic/restic/releases/download/v${RESTIC_VERSION}/restic-${RESTIC_VERSION}.tar.gz" \
   && cd /tmp \
@@ -13,11 +12,11 @@ RUN apk update \
   && cd /tmp/restic-${RESTIC_VERSION} \
   && go run build.go \
   && mv restic /go/bin/restic \
-  && rm -rf /tmp/restic* /var/cache/apk/*
+  && rm -rf /tmp/restic*
 
 
 # Release phase
-FROM golang:1.11-alpine
+FROM golang:1.16-alpine
 
 # Backup options
 ENV RESTIC_BACKUP_OPTIONS=""
@@ -40,12 +39,9 @@ COPY --from=0 /go/bin/restic /go/bin/restic
 ADD ./target/start_cron.sh /go/bin
 ADD ./target/supervisor_restic.ini /etc/supervisor.d/restic.ini
 
-RUN apk update && \
-    apk add ca-certificates fuse gnupg openssh supervisor && \
+RUN apk add --no-cache ca-certificates fuse gnupg openssh-client supervisor && \
     chmod +x /go/bin/start_cron.sh && \
-    mkdir -p /var/log/supervisor && \
-    rm -rf /var/cache/apk/*
+    mkdir -p /var/log/supervisor
 
 # Start the process
 CMD supervisord -c /etc/supervisord.conf
-
