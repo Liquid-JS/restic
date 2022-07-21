@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.13.1
+
+  * Update Golang to version 1.18
+  * Update Restic to 0.13.1
+  * Reduce image size
+  * Don't restart cleanup job by default
+
 ## v0.12.0
 
   * Update Golang to version 1.16
