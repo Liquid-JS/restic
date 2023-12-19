@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.16.1
+
+-   Update Restic to 0.16.1
+
 ## v0.16.0
 
 -   Update Golang to version 1.21
