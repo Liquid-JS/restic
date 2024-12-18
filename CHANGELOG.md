@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.17.2
+
+-   Update Restic to 0.17.2
+
 ## v0.17.1
 
 -   Update Restic to 0.17.1
