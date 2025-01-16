@@ -5,14 +5,14 @@ ENV RESTIC_VERSION="0.17.3"
 
 # Install the items
 RUN apk add --no-cache ca-certificates wget gnupg git \
-  && update-ca-certificates \
-  && wget -qO /tmp/restic-${RESTIC_VERSION}.tar.gz "https://github.com/restic/restic/releases/download/v${RESTIC_VERSION}/restic-${RESTIC_VERSION}.tar.gz" \
-  && cd /tmp \
-  && tar -xf /tmp/restic-${RESTIC_VERSION}.tar.gz -C /tmp/ \
-  && cd /tmp/restic-${RESTIC_VERSION} \
-  && go run build.go \
-  && mv restic /go/bin/restic \
-  && rm -rf /tmp/restic*
+    && update-ca-certificates \
+    && wget -qO /tmp/restic-${RESTIC_VERSION}.tar.gz "https://github.com/restic/restic/releases/download/v${RESTIC_VERSION}/restic-${RESTIC_VERSION}.tar.gz" \
+    && cd /tmp \
+    && tar -xf /tmp/restic-${RESTIC_VERSION}.tar.gz -C /tmp/ \
+    && cd /tmp/restic-${RESTIC_VERSION} \
+    && go run build.go \
+    && mv restic /go/bin/restic \
+    && rm -rf /tmp/restic*
 
 
 # Release phase

@@ -1,19 +1,21 @@
 # docker-restic
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/liquidjs/restic.svg)](https://hub.docker.com/r/liquidjs/restic/) [![Github Stars](https://img.shields.io/github/stars/Liquid-JS/restic.svg?label=github%20%E2%98%85)](https://github.com/Liquid-JS/restic/) [![Github Stars](https://img.shields.io/github/contributors/Liquid-JS/restic.svg)](https://github.com/Liquid-JS/restic/) [![Github Forks](https://img.shields.io/github/forks/Liquid-JS/restic.svg?label=github%20forks)](https://github.com/Liquid-JS/restic/)
+[![GitHub license](https://img.shields.io/github/license/Liquid-JS/restic.svg)](https://github.com/Liquid-JS/restic/blob/master/LICENSE)
+[![Docker Pulls](https://img.shields.io/docker/pulls/liquidjs/restic.svg)](https://hub.docker.com/r/liquidjs/restic/)
 
 Restic is a fantastic backup tool. To wrap this in a useful and flexible docker container there is this repo.
 
 Includes:
 
-* [restic](https://github.com/restic/restic)
-* cron (for scheduling)
+-   [restic](https://github.com/restic/restic)
+-   cron (for scheduling)
 
-----
+* * *
 
 ## Usage
 
 #### Get latest image
+
 You can run restic command very like this:
 
 ```bash
@@ -28,7 +30,6 @@ docker run --rm -e RESTIC_REPOSITORY="s3:https://s3.amazonaws.com/some-repo" \
                 -v /:/data
                 restic snapshots
 ```
-
 
 #### Create a `docker-compose.yml`
 
@@ -56,13 +57,13 @@ services:
       - RESTIC_PASSWORD="some_good_hash"
 ```
 
-----
+* * *
 
 ## Examples
 
-__Listed in these examples are also the defaults__
+**Listed in these examples are also the defaults**
 
-__to change the backup times__:
+**to change the backup times**:
 
 For example you want to run the backup every day at 03:15.
 
@@ -87,8 +88,7 @@ services:
       - RESTIC_PASSWORD="some_good_hash"
 ```
 
-
-__to change the clean times and periods__:
+**to change the clean times and periods**:
 
 For example you want to run the backup every day at 00:00
 
@@ -123,7 +123,7 @@ services:
 
 You're done!
 
-----
+* * *
 
 ## Commands to start with
 
@@ -140,7 +140,6 @@ docker run --rm -e RESTIC_REPOSITORY="s3:https://s3.amazonaws.com/some-repo" \
                 restic init
 ```
 
-
 #### List the snapshots
 
 ```bash
@@ -151,8 +150,6 @@ docker run --rm -e RESTIC_REPOSITORY="s3:https://s3.amazonaws.com/some-repo" \
                 -v /:/data
                 restic snapshots
 ```
-
-
 
 #### Restore a snapshot
 
@@ -177,38 +174,40 @@ docker exec restic supervisorctl start restic_backup
 docker exec -ti restic _command_
 ```
 
-
-
 ## Environment variables
 
 #### RESTIC_BACKUP_OPTIONS
 
-  - **""** => None set by default
+-   **""** => None set by default
 
 #### RESTIC_CLEANUP_KEEP_DAILY
 
-  - **7** => to keep 7 daily backups
+-   **7** => to keep 7 daily backups
 
 #### RESTIC_CLEANUP_KEEP_WEEKLY
 
-  - **5** => to keep 5 daily backups
+-   **5** => to keep 5 daily backups
 
 #### RESTIC_CLEANUP_KEEP_MONTHLY
 
-  - **12** => to keep 12 daily backups
+-   **12** => to keep 12 daily backups
 
 #### RESTIC_CLEANUP_KEEP_YEARLY
 
-  - **75** => to keep 75 daily backups
+-   **75** => to keep 75 daily backups
 
 #### RESTIC_CLEANUP_OPTIONS
 
-  - **"--prune"** => Clean the repository of old backups
+-   **"--prune"** => Clean the repository of old backups
 
 #### CRON_BACKUP_EXPRESSION
 
-  - **"15   3  *   *   *"** => Fire at 03:15 every day
+-   **"15   3  \*   \*   \*"** => Fire at 03:15 every day
 
 #### CRON_CLEANUP_EXPRESSION
 
-  - **"15  0  0   *   *"** => Fire at 00:15 on the first day of every month
+-   **"15  0  0   \*   \*"** => Fire at 00:15 on the first day of every month
+
+## License
+
+[MIT License](https://github.com/Liquid-JS/restic/blob/master/LICENSE)
