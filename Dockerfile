@@ -1,7 +1,7 @@
 # Build Phase
-FROM golang:1.23-alpine
+FROM golang:1.25-alpine
 
-ENV RESTIC_VERSION="0.17.3"
+ENV RESTIC_VERSION="0.18.0"
 
 # Install the items
 RUN apk add --no-cache ca-certificates wget gnupg git \
@@ -44,4 +44,4 @@ RUN apk add --no-cache ca-certificates fuse gnupg openssh-client supervisor && \
     mkdir -p /var/log/supervisor
 
 # Start the process
-CMD supervisord -c /etc/supervisord.conf
+CMD [ "supervisord", "-c", "/etc/supervisord.conf" ]
