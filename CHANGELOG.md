@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.19.0
+
+-   Update Golang to version 1.26
+-   Update Restic to 0.19.0
+
 ## v0.18.1
 
 -   Update Restic to 0.18.1
