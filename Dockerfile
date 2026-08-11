@@ -1,7 +1,7 @@
 # Build Phase
-FROM golang:1.25-alpine
+FROM golang:1.26-alpine
 
-ENV RESTIC_VERSION="0.18.1"
+ENV RESTIC_VERSION="0.19.0"
 
 # Install the items
 RUN apk add --no-cache ca-certificates wget gnupg git \
